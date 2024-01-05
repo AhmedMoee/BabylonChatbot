@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DisplayArea } from "./DisplayArea";
 
 export const ChatInterface = () => {
 	const [text, setText] = useState("");
@@ -6,12 +7,7 @@ export const ChatInterface = () => {
 
 	return (
 		<>
-			{textArray.map((element, index) => (
-				<p key={index}>
-					{element}
-					<br />
-				</p>
-			))}
+			<DisplayArea textArray={textArray} />
 
 			<form
 				onSubmit={(event) => {
