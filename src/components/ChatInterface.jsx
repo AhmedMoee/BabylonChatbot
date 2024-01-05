@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const InputField = () => {
+export const ChatInterface = () => {
 	const [text, setText] = useState("");
 	const [textArray, setTextArray] = useState([]);
 
