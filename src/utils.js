@@ -13,15 +13,7 @@ export const createOpenAI = () => {
 };
 
 export const getThread = async (openai) => {
-	const thread = await openai.beta.threads.create({
-		messages: [
-			{
-				role: "user",
-				content: "Hi!",
-				file_ids: [],
-			},
-		],
-	});
+	const thread = await openai.beta.threads.create();
 	return thread.id;
 };
 

@@ -18,6 +18,16 @@ function App() {
 	}, []);
 
 	useEffect(() => {
+		const addMessage = async (message) => {
+			await openai.beta.threads.messages.create(thread_id, {
+				role: "user",
+				content: message,
+			});
+		};
+		addMessage("What are your instructions?");
+	}, [thread_id]);
+
+	useEffect(() => {
 		const run = async () => {
 			const run = await openai.beta.threads.runs.create(thread_id, {
 				assistant_id: assistant,
@@ -38,7 +48,7 @@ function App() {
 			}
 		};
 		run();
-	}, [thread_id]);
+	}, [assistant, thread_id]);
 
 	useEffect(() => {
 		const listMessages = async () => {
