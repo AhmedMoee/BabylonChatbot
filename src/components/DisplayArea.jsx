@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 export const DisplayArea = ({ textArray }) => {
 	return (
 		<div className="chat-container">

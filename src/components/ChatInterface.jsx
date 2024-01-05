@@ -22,8 +22,9 @@ export const ChatInterface = () => {
 					placeholder="Enter a question"
 					value={text}
 					onChange={(event) => setText(event.target.value)}
+					className="input-box"
 				/>
-				<input type="submit" value="Submit" />
+				<input type="submit" value="Submit" className="submit-box"/>
 			</form>
 		</>
 	);

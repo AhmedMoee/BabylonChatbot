@@ -5,7 +5,8 @@ import { getThread, createOpenAI, getAssistant } from "./utils.js";
 
 function App() {
   const openai = createOpenAI();
-  const [thread_id, setThreadID] = useState("");
+  const [thread_id, setThreadID] = useState(null);
+  const assistant = getAssistant();
 
   useEffect(() => {
     const func = async () => {
@@ -14,17 +15,22 @@ function App() {
     };
     func();
   }, []);
-  console.log(thread_id);
-  const assistant = getAssistant();
 
-  const run = async () => {
-    const run = await openai.beta.threads.runs.create(thread_id, {
-      assistant_id: assistant,
-    });
-    return run;
-  };
+  useEffect(() => {
+	const run = async () => {
+		try {
+			const run = await openai.beta.threads.runs.create(thread_id, {
+				assistant_id: assistant,
+			});
+			console.log(run)
+		} catch(error) {
+			console.log(error);
+		}
 
-  run();
+		run();
+	}
+	console.log(run)
+  }, [])
 
   return (
     <>
