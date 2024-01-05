@@ -1,38 +1,34 @@
 import { useState } from "react";
 
 export const InputField = () => {
-	const [state, setState] = useState("");
-	const [text, setText] = useState([]);
+	const [text, setText] = useState("");
+	const [textArray, setTextArray] = useState([]);
 
 	return (
 		<>
-			{text.map((element, index) => (
+			{textArray.map((element, index) => (
 				<p key={index}>
 					{element}
 					<br />
 				</p>
 			))}
 
-			<input
-				type={"text"}
-				id={"name"}
-				value={state}
-				placeholder="Enter a question"
-				onChange={(event) => setState(event.target.value)}
-				onKeyUp={(key) => {
-					if (key.key === "Enter") {
-						setText((text) => [...text, state]);
-					}
-				}}
-			/>
-
-			<button
-				onClick={() => {
-					setText((text) => [...text, state]);
+			<form
+				onSubmit={(event) => {
+					event.preventDefault();
+					setTextArray((textArray) => [...textArray, text]);
+					setText("");
 				}}
 			>
-				Enter
-			</button>
+				<input
+					type="text"
+					id="input"
+					placeholder="Enter a question"
+					value={text}
+					onChange={(event) => setText(event.target.value)}
+				/>
+				<input type="submit" value="Submit" />
+			</form>
 		</>
 	);
 };

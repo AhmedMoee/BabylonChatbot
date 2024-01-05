@@ -1,1 +1,2 @@
-// They recommened we make a JS file to do a lot of our stuff
+// Contains functions you can call from Component (‘jsx’) files.
+// These functions will handle creating threads, runs, messages, and receiving the response from the assistant.
