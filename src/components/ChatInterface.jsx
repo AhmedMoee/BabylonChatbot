@@ -1,40 +1,6 @@
-import { DisplayArea } from "./DisplayArea";
+import { DisplayArea, giveThread } from "./DisplayArea";
 import { useState, useEffect } from "react";
 import { getThread, createOpenAI, getAssistant } from "../utils.js";
-
-const cycle = async (message, thread_id, assistant, openai, setCompleted) => {
-  await openai.beta.threads.messages.create(thread_id, {
-    role: "user",
-    content: message,
-  });
-  const run = await openai.beta.threads.runs.create(thread_id, {
-    assistant_id: assistant,
-  });
-
-  let timeElapsed = 0;
-  while (timeElapsed < 100) {
-    const retreiveRun = await openai.beta.threads.runs.retrieve(
-      thread_id,
-      run.id
-    );
-    if (retreiveRun.status === "completed") {
-      printMessages(thread_id, openai);
-      return;
-    }
-    timeElapsed += 1;
-  }
-  console.log("failed to respond in time");
-};
-
-const printMessages = async (thread_id, openai) => {
-  const threadMessages = await openai.beta.threads.messages.list(thread_id);
-
-  console.log("-".repeat(100));
-
-  for (let i = threadMessages.data.length - 1; i >= 0; i--) {
-    console.log(threadMessages.data[i].content[0].text.value);
-  }
-};
 
 export const ChatInterface = () => {
   const [text, setText] = useState("");
@@ -51,6 +17,51 @@ export const ChatInterface = () => {
     };
     func();
   }, []);
+
+  const cycle = async (message, thread_id, assistant, openai) => {
+    await openai.beta.threads.messages.create(thread_id, {
+      role: "user",
+      content: message,
+    });
+    const run = await openai.beta.threads.runs.create(thread_id, {
+      assistant_id: assistant,
+    });
+
+    let timeElapsed = 0;
+    while (timeElapsed < 100) {
+      const retreiveRun = await openai.beta.threads.runs.retrieve(
+        thread_id,
+        run.id
+      );
+      if (retreiveRun.status === "completed") {
+        printMessages(thread_id, openai);
+        return;
+      }
+      timeElapsed += 1;
+    }
+    console.log("failed to respond in time");
+    return [];
+  };
+
+  const printMessages = async (thread_id, openai) => {
+    const threadMessages = await openai.beta.threads.messages.list(thread_id);
+
+    console.log("-".repeat(100));
+
+    let textArr = [];
+
+    for (let i = threadMessages.data.length - 1; i >= 0; i--) {
+      console.log();
+      textArr.push(
+        threadMessages.data[i].role +
+          ": " +
+          threadMessages.data[i].content[0].text.value
+      );
+    }
+
+    console.log(textArr);
+    // giveThread(textArr)
+  };
 
   return (
     <>
