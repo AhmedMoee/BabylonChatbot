@@ -47,11 +47,12 @@ export const ChatInterface = () => {
     let textArr = [];
 
     for (let i = threadMessages.data.length - 1; i >= 0; i--) {
-      textArr.push(
-        threadMessages.data[i].role +
-          ": " +
-          threadMessages.data[i].content[0].text.value
-      );
+      textArr.push({
+        role: threadMessages.data[i].role,
+        message: threadMessages.data[i].content[0].text.value,
+      });
+
+      //
     }
     setTextArray(textArr);
   };
@@ -61,7 +62,7 @@ export const ChatInterface = () => {
       <div className="chat-container">
         {textArray.map((element, index) => (
           <p key={index} className="text-box">
-            {element}
+            {element.role}: {element.message}
             <br />
           </p>
         ))}
@@ -70,6 +71,10 @@ export const ChatInterface = () => {
       <form
         onSubmit={(event) => {
           event.preventDefault();
+          setTextArray((textArray) => [
+            ...textArray,
+            { role: "user", message: text },
+          ]);
           setText("");
           cycle(text, thread_id, assistant, openai);
         }}
