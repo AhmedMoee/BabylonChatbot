@@ -6,10 +6,9 @@ import "../App.css";
 export const ChatInterface = () => {
 	const [text, setText] = useState("");
 	const [textArray, setTextArray] = useState([]);
-
+	const [thread_id, setThreadID] = useState("");
 	const openai = createOpenAI();
 	const assistant = getAssistant();
-	const [thread_id, setThreadID] = useState("");
 
 	useEffect(() => {
 		const func = async () => {
@@ -52,19 +51,22 @@ export const ChatInterface = () => {
 				role: threadMessages.data[i].role,
 				message: threadMessages.data[i].content[0].text.value,
 			});
-
-			//
 		}
+
 		setTextArray(textArr);
 	};
 
 	return (
 		<>
 			<div className="chat-container">
+				<p className="assistant">Hi! 👋 How can I help you today?</p>
+				<p className="assistant">
+					Ask me anything about Babylon Micro-Farms' product, the Galleri
+					Micro-Farm.
+				</p>
 				{textArray.map((element, index) => (
 					<p key={index} className={element.role}>
 						{element.message}
-						<br />
 					</p>
 				))}
 			</div>
