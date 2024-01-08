@@ -1,4 +1,4 @@
-import { DisplayArea, giveThread } from "./DisplayArea";
+// import { DisplayArea, giveThread } from "./DisplayArea";
 import { useState, useEffect } from "react";
 import { getThread, createOpenAI, getAssistant } from "../utils.js";
 
@@ -40,37 +40,36 @@ export const ChatInterface = () => {
       timeElapsed += 1;
     }
     console.log("failed to respond in time");
-    return [];
   };
 
   const printMessages = async (thread_id, openai) => {
     const threadMessages = await openai.beta.threads.messages.list(thread_id);
-
-    console.log("-".repeat(100));
-
     let textArr = [];
 
     for (let i = threadMessages.data.length - 1; i >= 0; i--) {
-      console.log();
       textArr.push(
         threadMessages.data[i].role +
           ": " +
           threadMessages.data[i].content[0].text.value
       );
     }
-
-    console.log(textArr);
-    // giveThread(textArr)
+    setTextArray(textArr);
   };
 
   return (
     <>
-      <DisplayArea textArray={textArray} />
+      <div className="chat-container">
+        {textArray.map((element, index) => (
+          <p key={index} className="text-box">
+            {element}
+            <br />
+          </p>
+        ))}
+      </div>
 
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          setTextArray((textArray) => [...textArray, text]);
           setText("");
           cycle(text, thread_id, assistant, openai);
         }}
