@@ -1,4 +1,3 @@
-// import { DisplayArea, giveThread } from "./DisplayArea";
 import { useState, useEffect } from "react";
 import { getThread, createOpenAI, getAssistant } from "../utils.js";
 import "../App.css";
