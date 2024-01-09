@@ -64,7 +64,7 @@ export const ChatInterface = () => {
 			<div className="flex items-center justify-center text-base font-medium sm:text-lg md:text-xl lg:text-xl">
 				<div className="space-y-5">
 					<div className="max-h-[58vh] min-h-[58vh] min-w-[90vw] max-w-[90vw] space-y-10 overflow-y-auto rounded-3xl bg-gray-200 bg-opacity-30 p-5 shadow-2xl backdrop-blur-sm sm:max-h-[70vh] sm:min-h-[70vh] sm:min-w-[60vw] sm:max-w-[60vw] md:max-h-[70vh] md:min-h-[70vh] md:min-w-[60vw] md:max-w-[60vw] lg:max-h-[70vh] lg:min-h-[70vh] lg:min-w-[60vw] lg:max-w-[60vw]">
-						<div className="flex items-start justify-start space-x-5">
+						<div className="mr-[67.5px] flex items-start justify-start space-x-5">
 							<img
 								className="inline-block h-8 w-8 rounded-full ring ring-white md:h-12 md:w-12 lg:h-12 lg:w-12"
 								src="/src/assets/Babylon-Profile-Image.jpg"
@@ -78,7 +78,7 @@ export const ChatInterface = () => {
 								Hi! 👋 How can I help you today?
 							</p>
 						</div>
-						<div className="flex items-start justify-start space-x-5">
+						<div className="mr-[67.5px] flex items-start justify-start space-x-5">
 							<img
 								className="inline-block h-8 w-8 rounded-full ring ring-white md:h-12 md:w-12 lg:h-12 lg:w-12"
 								src="/src/assets/Babylon-Profile-Image.jpg"
