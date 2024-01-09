@@ -61,15 +61,12 @@ export const ChatInterface = () => {
 
 	return (
 		<>
-			<div className="flex items-center justify-center text-xl font-medium">
+			<div className="flex items-center justify-center text-base font-medium sm:text-lg md:text-xl lg:text-xl">
 				<div className="space-y-5">
-					<div
-						className="h-[70vh] max-h-[70vh] w-[60vw] max-w-[60vw] space-y-10 overflow-y-auto rounded-3xl bg-gray-200 bg-opacity-30 p-5 shadow-2xl backdrop-blur-sm"
-						// style={{ backgroundImage: 'url(src/assets/Babylon_Leaf.png)' }}
-					>
+					<div className="h-[70vh] max-h-[70vh] w-[60vw] max-w-[60vw] space-y-10 overflow-y-auto rounded-3xl bg-gray-200 bg-opacity-30 p-5 shadow-2xl backdrop-blur-sm">
 						<div className="flex items-start justify-start space-x-5">
 							<img
-								className="inline-block h-12 w-12 rounded-full ring ring-white"
+								className="inline-block h-8 w-8 rounded-full ring ring-white md:h-12 md:w-12 lg:h-12 lg:w-12"
 								src="/src/assets/Babylon-Profile-Image.jpg"
 								alt="logo"
 							/>
@@ -83,7 +80,7 @@ export const ChatInterface = () => {
 						</div>
 						<div className="flex items-start justify-start space-x-5">
 							<img
-								className="inline-block h-12 w-12 rounded-full ring ring-white"
+								className="inline-block h-8 w-8 rounded-full ring ring-white md:h-12 md:w-12 lg:h-12 lg:w-12"
 								src="/src/assets/Babylon-Profile-Image.jpg"
 								alt="logo"
 							/>
@@ -99,7 +96,7 @@ export const ChatInterface = () => {
 							element.role === 'assistant' ? (
 								<div key={index} className="mr-[67.5px] flex items-start justify-start space-x-5">
 									<img
-										className="inline-block h-12 w-12 rounded-full ring ring-white"
+										className="inline-block h-8 w-8 rounded-full ring ring-white md:h-12 md:w-12 lg:h-12 lg:w-12"
 										src="/src/assets/Babylon-Profile-Image.jpg"
 										alt="logo"
 									/>
@@ -115,12 +112,12 @@ export const ChatInterface = () => {
 								<div key={index} className="ml-[67.5px] flex items-start justify-end space-x-5">
 									<p
 										className={
-											'bg-babylon-blue-dark w-fit rounded-bl-3xl rounded-br-3xl rounded-tl-3xl rounded-tr-md p-4 text-white drop-shadow-lg'
+											'bg-babylon-blue-dark dark:bg-babylon-blue-light w-fit rounded-bl-3xl rounded-br-3xl rounded-tl-3xl rounded-tr-md p-4 text-white drop-shadow-lg'
 										}
 									>
 										{element.message}
 									</p>
-									<div className="bg-babylon-blue-light inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-xl text-white ring ring-white">
+									<div className="bg-babylon-blue-light dark:bg-babylon-blue-dark inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white ring ring-white sm:text-base md:h-12 md:w-12 md:text-lg lg:h-12 lg:w-12 lg:text-xl">
 										AF
 									</div>
 								</div>
@@ -129,51 +126,53 @@ export const ChatInterface = () => {
 						<div ref={bottomRef} />
 					</div>
 
-					<form
-						onSubmit={(event) => {
-							event.preventDefault()
-							setTextArray((textArray) => [...textArray, { role: 'user', message: text }])
-							setText('')
-							cycle(text, thread_id, assistant, openai)
-							setDisabled(true)
-						}}
-					>
-						{disabled ? (
-							<div className="flex items-center justify-center space-x-5">
-								<input
-									disabled
-									className=" flex-auto rounded-xl p-3 text-black drop-shadow-lg placeholder:text-black"
-									type="text"
-									id="input"
-									placeholder="Enter a question"
-									value={text}
-									onChange={(event) => setText(event.target.value)}
-								/>
-								<input
-									disabled
-									type="submit"
-									value="Enter"
-									className=" sm:bg-babylon-blue-dark rounded-xl p-3 text-white"
-								/>
-							</div>
-						) : (
-							<div className="flex items-center justify-center space-x-5">
-								<input
-									className=" flex-auto rounded-xl p-3 text-black drop-shadow-lg placeholder:text-black"
-									type="text"
-									id="input"
-									placeholder="Enter a question"
-									value={text}
-									onChange={(event) => setText(event.target.value)}
-								/>
-								<input
-									type="submit"
-									value="Enter"
-									className=" sm:bg-babylon-blue-dark rounded-xl p-3 text-white"
-								/>
-							</div>
-						)}
-					</form>
+					<div>
+						<form
+							onSubmit={(event) => {
+								event.preventDefault()
+								setTextArray((textArray) => [...textArray, { role: 'user', message: text }])
+								setText('')
+								cycle(text, thread_id, assistant, openai)
+								setDisabled(true)
+							}}
+						>
+							{disabled ? (
+								<div className="flex items-center justify-center space-x-5">
+									<input
+										disabled
+										className=" flex-auto rounded-xl p-3 text-black drop-shadow-lg placeholder:text-black"
+										type="text"
+										id="input"
+										placeholder="Enter a question"
+										value={text}
+										onChange={(event) => setText(event.target.value)}
+									/>
+									<input
+										disabled
+										type="submit"
+										value="Enter"
+										className=" bg-babylon-blue-dark dark:bg-babylon-blue-light hidden rounded-xl p-3 text-white md:block lg:block"
+									/>
+								</div>
+							) : (
+								<div className="flex items-center justify-center space-x-5">
+									<input
+										className=" flex-auto rounded-xl p-3 text-black drop-shadow-lg placeholder:text-black"
+										type="text"
+										id="input"
+										placeholder="Enter a question"
+										value={text}
+										onChange={(event) => setText(event.target.value)}
+									/>
+									<input
+										type="submit"
+										value="Enter"
+										className=" dark:bg-babylon-blue-light bg-babylon-blue-dark hidden rounded-xl p-3 text-white md:block lg:block"
+									/>
+								</div>
+							)}
+						</form>
+					</div>
 				</div>
 			</div>
 		</>
