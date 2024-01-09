@@ -51,6 +51,14 @@ export const ChatInterface = () => {
     let textArr = [];
 
     for (let i = threadMessages.data.length - 1; i >= 0; i--) {
+      let annotations = threadMessages.data[i].content[0].text.annotations;
+
+      for (let j = 0; j < annotations.length; j++) {
+        threadMessages.data[i].content[0].text.value = threadMessages.data[
+          i
+        ].content[0].text.value.replace(annotations[j].text, "");
+      }
+
       textArr.push({
         role: threadMessages.data[i].role,
         message: threadMessages.data[i].content[0].text.value,
