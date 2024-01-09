@@ -5,7 +5,7 @@ export default function App() {
 	return (
 		<>
 			<div
-				className="bg-babylon-blue-light bg-25% min-h-screen bg-center bg-repeat-x"
+				className="bg-babylon-blue-light bg-25% min-h-screen bg-center bg-no-repeat"
 				style={{ backgroundImage: 'url(src/assets/Babylon_Leaf_White.png)' }}
 			>
 				<div className="flex items-center justify-center space-x-3">
