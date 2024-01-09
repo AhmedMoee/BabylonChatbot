@@ -9,13 +9,15 @@ export default function App() {
 				style={{ backgroundImage: 'url(src/assets/Babylon_Leaf_White.png)' }}
 			>
 				<div className="flex items-center justify-center space-x-3">
-					<picture className="inline-block w-1/5" alt="logo">
-						<source
-							srcSet="/src/assets/Babylon-Logo-White.png"
-							media="(prefers-color-scheme:dark)"
-						/>
-						<img src="/src/assets/Babylon-Logo.png" />
-					</picture>
+					<a className="inline-block w-1/5" href="https://babylonmicrofarms.com/" target="_blank">
+						<picture alt="logo">
+							<source
+								srcSet="/src/assets/Babylon-Logo-White.png"
+								media="(prefers-color-scheme:dark)"
+							/>
+							<img src="/src/assets/Babylon-Logo.png" />
+						</picture>
+					</a>
 					<h1 className="text-babylon-blue-dark sm:xl pb-8 pt-8 font-sans font-semibold md:text-3xl lg:text-5xl dark:text-white">
 						MICRO - BOT
 					</h1>
