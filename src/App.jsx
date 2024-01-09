@@ -1,5 +1,5 @@
-import "./App.css";
-import { ChatInterface } from "./components/ChatInterface";
+import './App.css'
+import { ChatInterface } from './components/ChatInterface'
 
 function App() {
 	return (
@@ -7,7 +7,7 @@ function App() {
 			<h1>Chatbot</h1>
 			<ChatInterface />
 		</>
-	);
+	)
 }
 
-export default App;
+export default App
