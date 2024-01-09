@@ -10,7 +10,7 @@ export default function App() {
 			>
 				<div className="flex items-center justify-center space-x-3">
 					<img className="inline-block w-1/5" src="/src/assets/Babylon-Logo.png" alt="logo" />
-					<h1 className="text-babylon-blue-dark pb-8 pt-8 font-sans text-5xl font-semibold">
+					<h1 className="text-babylon-blue-dark sm:xl pb-8 pt-8 font-sans font-semibold md:text-3xl lg:text-5xl">
 						MICRO - BOT
 					</h1>
 				</div>
