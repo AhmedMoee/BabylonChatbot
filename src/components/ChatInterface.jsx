@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { getThread, createOpenAI, getAssistant } from "../utils.js";
 import "../App.css";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
 
 export const ChatInterface = () => {
   const [text, setText] = useState("");
@@ -74,6 +76,37 @@ export const ChatInterface = () => {
 
   return (
     <>
+      <Popup
+        trigger={
+          <button className=" dark:bg-babylon-blue-light bg-babylon-blue-dark hidden rounded-xl p-3 text-white md:block lg:block">
+            {" "}
+            Login
+          </button>
+        }
+        position="right center"
+      >
+        <div>
+          <input
+            className=" flex-auto rounded-xl p-3 text-black drop-shadow-lg placeholder:text-black"
+            type="text"
+            id="input"
+            placeholder="Username"
+            value={text}
+          />
+          <input
+            className=" flex-auto rounded-xl p-3 text-black drop-shadow-lg placeholder:text-black"
+            type="text"
+            id="input"
+            placeholder="Password"
+            value={text}
+          />
+          <input
+            type="submit"
+            value="Enter"
+            className=" dark:bg-babylon-blue-light bg-babylon-blue-dark hidden rounded-xl p-3 text-white md:block lg:block"
+          />
+        </div>
+      </Popup>
       <div className="flex items-center justify-center text-base font-medium sm:text-lg md:text-xl lg:text-xl">
         <div className="space-y-5">
           <div className="max-h-[58vh] min-h-[58vh] min-w-[90vw] max-w-[90vw] space-y-10 overflow-y-auto rounded-3xl bg-gray-200 bg-opacity-30 p-5 shadow-2xl backdrop-blur-sm sm:max-h-[70vh] sm:min-h-[70vh] sm:min-w-[60vw] sm:max-w-[60vw] md:max-h-[70vh] md:min-h-[70vh] md:min-w-[60vw] md:max-w-[60vw] lg:max-h-[70vh] lg:min-h-[70vh] lg:min-w-[60vw] lg:max-w-[60vw]">
@@ -153,7 +186,6 @@ export const ChatInterface = () => {
                     className="h-10 w-10 animate-spin fill-gray-600 text-gray-200 dark:fill-gray-300 dark:text-gray-600"
                     viewBox="0 0 100 101"
                     fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
