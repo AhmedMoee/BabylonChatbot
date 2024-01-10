@@ -8,9 +8,39 @@ export const ChatInterface = () => {
   const [thread_id, setThreadID] = useState("");
   const [disabled, setDisabled] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [isListening, setIsListening] = useState(false);
   const openai = createOpenAI();
   const assistant = getAssistant();
   const bottomRef = useRef(null);
+
+  const handleSpeechToText = () => {
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      alert("Speech recognition not supported in this browser.");
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
+    recognition.continuous = false; 
+    recognition.interimResults = true; 
+    recognition.lang = 'en-US'; 
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      setText(transcript); 
+    };
+
+    recognition.start();
+
+    recognition.onend = () => {
+      setIsListening(false);
+    };
+
+    recognition.onerror = (event) => {
+      console.error("Speech Recognition Error", event.error);
+    };
+  };
 
   useEffect(() => {
     const func = async () => {
@@ -19,6 +49,12 @@ export const ChatInterface = () => {
     };
     func();
   }, []);
+
+  useEffect(() => {
+    if (isListening) {
+      handleSpeechToText();
+    }
+  }, [isListening]);
 
   const cycle = async (message, thread_id, assistant, openai) => {
     await openai.beta.threads.messages.create(thread_id, {
@@ -174,6 +210,7 @@ export const ChatInterface = () => {
                 setLoading(true);
                 cycle(text, thread_id, assistant, openai);
                 setDisabled(true);
+                console.log("submitting form")
               }}
             >
               {disabled ? (
@@ -204,6 +241,13 @@ export const ChatInterface = () => {
                     value={text}
                     onChange={(event) => setText(event.target.value)}
                   />
+                  <button type="button" onClick={() => setIsListening(true)}>
+                    <img
+                      className="inline-block h-8 w-8 rounded-full ring ring-white md:h-12 md:w-12 lg:h-12 lg:w-12"
+                      src={isListening ? "/src/assets/Microphone-Active-Icon.png" : "/src/assets/Microphone-Icon.png"} 
+                      alt="Microphone"
+                    ></img>
+                  </button>                  
                   <input
                     type="submit"
                     value="Enter"
