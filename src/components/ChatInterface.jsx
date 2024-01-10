@@ -70,7 +70,7 @@ export const ChatInterface = () => {
 				printMessages(thread_id, openai)
 				document.getElementById('input').disabled = false
 				document.getElementById('button').disabled = false
-				document.getElementById('microphone').disabled = true
+				document.getElementById('microphone').disabled = false
 				setLoading(false)
 				return
 			}
@@ -220,9 +220,14 @@ export const ChatInterface = () => {
 									value={text}
 									onChange={(event) => setText(event.target.value)}
 								/>
-								<button type="button" id="microphone" onClick={() => setIsListening(!isListening)}>
+								<button
+									className=""
+									type="button"
+									id="microphone"
+									onClick={() => setIsListening(!isListening)}
+								>
 									<img
-										className="inline-block h-8 w-8 md:h-12 md:w-12 lg:h-12 lg:w-12"
+										className="inline-block h-8 w-8 md:h-10 md:w-10 lg:h-10 lg:w-10"
 										src={
 											isListening
 												? '/src/assets/Microphone-Active-Icon.png'
