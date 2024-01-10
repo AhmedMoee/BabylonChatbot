@@ -8,9 +8,38 @@ export const ChatInterface = () => {
 	const [thread_id, setThreadID] = useState('')
 	const [disabled, setDisabled] = useState(false)
 	const [loading, setLoading] = useState(false)
+	const [isListening, setIsListening] = useState(false)
 	const openai = createOpenAI()
 	const assistant = getAssistant()
 	const bottomRef = useRef(null)
+
+	const handleSpeechToText = () => {
+		const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+		if (!SpeechRecognition) {
+			alert('Speech recognition not supported in this browser.')
+			return
+		}
+
+		const recognition = new SpeechRecognition()
+		recognition.continuous = false
+		recognition.interimResults = true
+		recognition.lang = 'en-US'
+
+		recognition.onresult = (event) => {
+			const transcript = event.results[0][0].transcript
+			setText(transcript)
+		}
+
+		recognition.start()
+
+		recognition.onend = () => {
+			setIsListening(false)
+		}
+
+		recognition.onerror = (event) => {
+			console.error('Speech Recognition Error', event.error)
+		}
+	}
 
 	useEffect(() => {
 		const func = async () => {
@@ -19,6 +48,12 @@ export const ChatInterface = () => {
 		}
 		func()
 	}, [])
+
+	useEffect(() => {
+		if (isListening) {
+			handleSpeechToText()
+		}
+	}, [isListening])
 
 	const cycle = async (message, thread_id, assistant, openai) => {
 		await openai.beta.threads.messages.create(thread_id, {
@@ -34,7 +69,9 @@ export const ChatInterface = () => {
 			const retreiveRun = await openai.beta.threads.runs.retrieve(thread_id, run.id)
 			if (retreiveRun.status === 'completed') {
 				printMessages(thread_id, openai)
-				setDisabled(false)
+				document.getElementById('input').disabled = false
+				document.getElementById('button').disabled = false
+				document.getElementById('microphone').disabled = true
 				setLoading(false)
 				return
 			}
@@ -48,6 +85,14 @@ export const ChatInterface = () => {
 		let textArr = []
 
 		for (let i = threadMessages.data.length - 1; i >= 0; i--) {
+			let annotations = threadMessages.data[i].content[0].text.annotations
+
+			for (let j = 0; j < annotations.length; j++) {
+				threadMessages.data[i].content[0].text.value = threadMessages.data[
+					i
+				].content[0].text.value.replace(annotations[j].text, '')
+			}
+
 			textArr.push({
 				role: threadMessages.data[i].role,
 				message: threadMessages.data[i].content[0].text.value
@@ -161,44 +206,38 @@ export const ChatInterface = () => {
 								setText('')
 								setLoading(true)
 								cycle(text, thread_id, assistant, openai)
-								setDisabled(true)
+								document.getElementById('input').disabled = true
+								document.getElementById('button').disabled = true
+								document.getElementById('microphone').disabled = true
+								console.log('submitting form')
 							}}
 						>
-							{disabled ? (
-								<div className="flex items-center justify-center space-x-5">
-									<input
-										disabled
-										className=" flex-auto rounded-xl p-3 text-black drop-shadow-lg placeholder:text-black"
-										type="text"
-										id="input"
-										placeholder="Enter a question"
-										value={text}
-										onChange={(event) => setText(event.target.value)}
-									/>
-									<input
-										disabled
-										type="submit"
-										value="Enter"
-										className=" hidden rounded-xl bg-babylon-blue-dark p-3 text-white md:block lg:block dark:bg-babylon-blue-light"
-									/>
-								</div>
-							) : (
-								<div className="flex items-center justify-center space-x-5">
-									<input
-										className=" flex-auto rounded-xl p-3 text-black drop-shadow-lg placeholder:text-black"
-										type="text"
-										id="input"
-										placeholder="Enter a question"
-										value={text}
-										onChange={(event) => setText(event.target.value)}
-									/>
-									<input
-										type="submit"
-										value="Enter"
-										className=" hidden rounded-xl bg-babylon-blue-dark p-3 text-white md:block lg:block dark:bg-babylon-blue-light"
-									/>
-								</div>
-							)}
+							<div className="flex items-center justify-center space-x-5">
+								<input
+									className=" flex-auto rounded-xl p-3 text-black drop-shadow-lg placeholder:text-black"
+									type="text"
+									id="input"
+									placeholder="Enter a question"
+									value={text}
+									onChange={(event) => setText(event.target.value)}
+								/>
+								<button type="button" id="microphone" onClick={() => setIsListening(!isListening)}>
+									<img
+										className="inline-block h-8 w-8 rounded-full ring ring-white md:h-12 md:w-12 lg:h-12 lg:w-12"
+										src={
+											isListening
+												? '/src/assets/Microphone-Active-Icon.png'
+												: '/src/assets/Microphone-Icon.png'
+										}
+									></img>
+								</button>
+								<input
+									type="submit"
+									id="button"
+									value="Enter"
+									className=" hidden rounded-xl bg-babylon-blue-dark p-3 text-white md:block lg:block dark:bg-babylon-blue-light"
+								/>
+							</div>
 						</form>
 					</div>
 				</div>
