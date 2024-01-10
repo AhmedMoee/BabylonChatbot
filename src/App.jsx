@@ -2,10 +2,25 @@ import './App.css'
 import { ChatInterface } from './components/ChatInterface'
 import { PopUp } from './components/PopUp.jsx'
 import { StarRating } from './components/StarRating.jsx'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 export default function App() {
-	const [buttonPopup, setButtonPopup] = useState(false)
+	const [buttonPopup, setButtonPopup] = useState(false);
+
+	let popUpRef = useRef();
+
+	useEffect(() => {
+		let handler = (e) => {
+			if (!popUpRef.current.contains(e.target)) {
+				setButtonPopup(false);
+			}
+		};
+		document.addEventListener("mousedown", handler);
+		return() => {
+			document.removeEventListener("mousedown", handler);
+		}
+	});
+
 	return (
 		<>
 			<div
@@ -33,18 +48,21 @@ export default function App() {
 
 				<ChatInterface />
 
-				<button onClick={() => setButtonPopup(!buttonPopup)}>
-					<img
-						className="fixed left-5 top-5 inline-block h-8 w-8 md:h-12 md:w-12 lg:h-12 lg:w-12"
-						src="/src/assets/star.png"
-						alt="logo"
-					/>
-				</button>
-
-				<PopUp trigger={buttonPopup}>
-					<h3 className="flex justify-center text-babylon-blue-dark">Rate Micro-Bot!</h3>
-					<StarRating />
-				</PopUp>
+				<div ref={popUpRef}>
+					<button onClick={() => setButtonPopup(!buttonPopup)}>
+						<img
+							className="fixed left-5 top-5 inline-block h-8 w-8 md:h-12 md:w-12 lg:h-12 lg:w-12"
+							src="/src/assets/star.png"
+							alt="logo"
+						/>
+					</button>
+				
+					<PopUp trigger={buttonPopup}>
+						<h3 className="flex justify-center text-babylon-blue-dark">Rate Micro-Bot!</h3>
+						<StarRating />
+					</PopUp>
+				</div>
+				
 			</div>
 		</>
 	)
