@@ -22,13 +22,13 @@ export const ChatInterface = () => {
     }
 
     const recognition = new SpeechRecognition();
-    recognition.continuous = false; 
-    recognition.interimResults = true; 
-    recognition.lang = 'en-US'; 
+    recognition.continuous = false;
+    recognition.interimResults = true;
+    recognition.lang = "en-US";
 
     recognition.onresult = (event) => {
       const transcript = event.results[0][0].transcript;
-      setText(transcript); 
+      setText(transcript);
     };
 
     recognition.start();
@@ -73,7 +73,9 @@ export const ChatInterface = () => {
       );
       if (retreiveRun.status === "completed") {
         printMessages(thread_id, openai);
-        setDisabled(false);
+        document.getElementById("input").disabled = false;
+        document.getElementById("button").disabled = false;
+        document.getElementById("microphone").disabled = true;
         setLoading(false);
         return;
       }
@@ -87,6 +89,14 @@ export const ChatInterface = () => {
     let textArr = [];
 
     for (let i = threadMessages.data.length - 1; i >= 0; i--) {
+      let annotations = threadMessages.data[i].content[0].text.annotations;
+
+      for (let j = 0; j < annotations.length; j++) {
+        threadMessages.data[i].content[0].text.value = threadMessages.data[
+          i
+        ].content[0].text.value.replace(annotations[j].text, "");
+      }
+
       textArr.push({
         role: threadMessages.data[i].role,
         message: threadMessages.data[i].content[0].text.value,
@@ -209,52 +219,42 @@ export const ChatInterface = () => {
                 setText("");
                 setLoading(true);
                 cycle(text, thread_id, assistant, openai);
-                setDisabled(true);
-                console.log("submitting form")
+                document.getElementById("input").disabled = true;
+                document.getElementById("button").disabled = true;
+                document.getElementById("microphone").disabled = true;
+                console.log("submitting form");
               }}
             >
-              {disabled ? (
-                <div className="flex items-center justify-center space-x-5">
-                  <input
-                    disabled
-                    className=" flex-auto rounded-xl p-3 text-black drop-shadow-lg placeholder:text-black"
-                    type="text"
-                    id="input"
-                    placeholder="Enter a question"
-                    value={text}
-                    onChange={(event) => setText(event.target.value)}
-                  />
-                  <input
-                    disabled
-                    type="submit"
-                    value="Enter"
-                    className=" bg-babylon-blue-dark dark:bg-babylon-blue-light hidden rounded-xl p-3 text-white md:block lg:block"
-                  />
-                </div>
-              ) : (
-                <div className="flex items-center justify-center space-x-5">
-                  <input
-                    className=" flex-auto rounded-xl p-3 text-black drop-shadow-lg placeholder:text-black"
-                    type="text"
-                    id="input"
-                    placeholder="Enter a question"
-                    value={text}
-                    onChange={(event) => setText(event.target.value)}
-                  />
-                  <button type="button" onClick={() => setIsListening(true)}>
-                    <img
-                      className="inline-block h-8 w-8 rounded-full ring ring-white md:h-12 md:w-12 lg:h-12 lg:w-12"
-                      src={isListening ? "/src/assets/Microphone-Active-Icon.png" : "/src/assets/Microphone-Icon.png"} 
-                      alt="Microphone"
-                    ></img>
-                  </button>                  
-                  <input
-                    type="submit"
-                    value="Enter"
-                    className=" dark:bg-babylon-blue-light bg-babylon-blue-dark hidden rounded-xl p-3 text-white md:block lg:block"
-                  />
-                </div>
-              )}
+              <div className="flex items-center justify-center space-x-5">
+                <input
+                  className=" flex-auto rounded-xl p-3 text-black drop-shadow-lg placeholder:text-black"
+                  type="text"
+                  id="input"
+                  placeholder="Enter a question"
+                  value={text}
+                  onChange={(event) => setText(event.target.value)}
+                />
+                <button
+                  type="button"
+                  id="microphone"
+                  onClick={() => setIsListening(!isListening)}
+                >
+                  <img
+                    className="inline-block h-8 w-8 rounded-full ring ring-white md:h-12 md:w-12 lg:h-12 lg:w-12"
+                    src={
+                      isListening
+                        ? "/src/assets/Microphone-Active-Icon.png"
+                        : "/src/assets/Microphone-Icon.png"
+                    }
+                  ></img>
+                </button>
+                <input
+                  type="submit"
+                  id="button"
+                  value="Enter"
+                  className=" dark:bg-babylon-blue-light bg-babylon-blue-dark hidden rounded-xl p-3 text-white md:block lg:block"
+                />
+              </div>
             </form>
           </div>
         </div>
