@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { getThread, createOpenAI, getAssistant } from "../utils.js";
-import "../App.css";
 
 export const ChatInterface = () => {
   const [text, setText] = useState("");
