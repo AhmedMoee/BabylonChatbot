@@ -1,7 +1,13 @@
 import './App.css'
 import { ChatInterface } from './components/ChatInterface'
+import { PopUp } from './components/PopUp.jsx';
+import { StarRating } from './components/StarRating.jsx';
+import { useState } from 'react';
+
 
 export default function App() {
+	const [buttonPopup, setButtonPopup] = useState(false)
+
 	return (
 		<>
 			<div
@@ -26,8 +32,14 @@ export default function App() {
 						MICRO - BOT
 					</h1>
 				</div>
-
+				
 				<ChatInterface />
+
+				<button className="fdark:bg-babylon-blue-light bg-babylon-blue-dark hidden rounded-xl p-3 text-white md:block lg:block fixed top-0 left-0" onClick={()=> setButtonPopup(!buttonPopup)}>Feedback</button>
+				<PopUp trigger={buttonPopup}>
+					<h3 className="title">Rate Micro-Bot!</h3>
+					<StarRating />
+				</PopUp>
 			</div>
 		</>
 	)
