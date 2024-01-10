@@ -3,6 +3,8 @@ import { ChatInterface } from './components/ChatInterface'
 import { PopUp } from './components/PopUp.jsx';
 import { StarRating } from './components/StarRating.jsx';
 import { useState } from 'react';
+import { FaStar } from 'react-icons/fa';
+
 
 
 export default function App() {
@@ -33,7 +35,13 @@ export default function App() {
 				</div>
 
 				<ChatInterface />
-				<button className="fdark:bg-babylon-blue-light bg-babylon-blue-dark hidden rounded-xl p-3 text-white md:block lg:block fixed top-0 left-0" onClick={()=> setButtonPopup(!buttonPopup)}>Feedback</button>
+				<button onClick={()=> setButtonPopup(!buttonPopup)}>
+				<img
+					className="inline-block h-8 w-8 md:h-12 md:w-12 lg:h-12 lg:w-12 fixed top-5 left-5"
+					src="/src/assets/star.png"
+					alt="logo"
+				/>
+				</button>
 				<PopUp trigger={buttonPopup}>
 					<h3 className="title">Rate Micro-Bot!</h3>
 					<StarRating />
