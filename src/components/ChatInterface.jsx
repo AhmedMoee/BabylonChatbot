@@ -5,7 +5,6 @@ export const ChatInterface = () => {
   const [text, setText] = useState("");
   const [textArray, setTextArray] = useState([]);
   const [thread_id, setThreadID] = useState("");
-  const [disabled, setDisabled] = useState(false);
   const [loading, setLoading] = useState(false);
   const openai = createOpenAI();
   const assistant = getAssistant();
@@ -36,7 +35,8 @@ export const ChatInterface = () => {
       );
       if (retreiveRun.status === "completed") {
         printMessages(thread_id, openai);
-        setDisabled(false);
+        document.getElementById("input").disabled = false;
+        document.getElementById("button").disabled = false;
         setLoading(false);
         return;
       }
@@ -180,44 +180,26 @@ export const ChatInterface = () => {
                 setText("");
                 setLoading(true);
                 cycle(text, thread_id, assistant, openai);
-                setDisabled(true);
+                document.getElementById("input").disabled = true;
+                document.getElementById("button").disabled = true;
               }}
             >
-              {disabled ? (
-                <div className="flex items-center justify-center space-x-5">
-                  <input
-                    disabled
-                    className=" flex-auto rounded-xl p-3 text-black drop-shadow-lg placeholder:text-black"
-                    type="text"
-                    id="input"
-                    placeholder="Enter a question"
-                    value={text}
-                    onChange={(event) => setText(event.target.value)}
-                  />
-                  <input
-                    disabled
-                    type="submit"
-                    value="Enter"
-                    className=" bg-babylon-blue-dark dark:bg-babylon-blue-light hidden rounded-xl p-3 text-white md:block lg:block"
-                  />
-                </div>
-              ) : (
-                <div className="flex items-center justify-center space-x-5">
-                  <input
-                    className=" flex-auto rounded-xl p-3 text-black drop-shadow-lg placeholder:text-black"
-                    type="text"
-                    id="input"
-                    placeholder="Enter a question"
-                    value={text}
-                    onChange={(event) => setText(event.target.value)}
-                  />
-                  <input
-                    type="submit"
-                    value="Enter"
-                    className=" dark:bg-babylon-blue-light bg-babylon-blue-dark hidden rounded-xl p-3 text-white md:block lg:block"
-                  />
-                </div>
-              )}
+              <div className="flex items-center justify-center space-x-5">
+                <input
+                  className=" flex-auto rounded-xl p-3 text-black drop-shadow-lg placeholder:text-black"
+                  type="text"
+                  id="input"
+                  placeholder="Enter a question"
+                  value={text}
+                  onChange={(event) => setText(event.target.value)}
+                />
+                <input
+                  id="button"
+                  type="submit"
+                  value="Enter"
+                  className=" dark:bg-babylon-blue-light bg-babylon-blue-dark hidden rounded-xl p-3 text-white md:block lg:block"
+                />
+              </div>
             </form>
           </div>
         </div>
