@@ -14,6 +14,11 @@ export default {
 				contain: 'contain',
 				'50%': '50%',
 				'25%': '25%'
+			},
+			spacing: {
+				100: '25rem', // 400px
+				120: '30rem', // 480px
+				160: '40rem' // 640px
 			}
 		}
 	},

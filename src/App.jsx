@@ -1,18 +1,15 @@
 import './App.css'
 import { ChatInterface } from './components/ChatInterface'
-import { PopUp } from './components/PopUp.jsx';
-import { StarRating } from './components/StarRating.jsx';
-import { useState } from 'react';
-import { FaStar } from 'react-icons/fa';
-
-
+import { PopUp } from './components/PopUp.jsx'
+import { StarRating } from './components/StarRating.jsx'
+import { useState } from 'react'
 
 export default function App() {
 	const [buttonPopup, setButtonPopup] = useState(false)
 	return (
 		<>
 			<div
-				className="bg-babylon-blue-light dark:bg-babylon-blue-dark bg-25% h-dvh bg-center bg-no-repeat"
+				className="h-dvh bg-babylon-blue-light bg-25% bg-center bg-no-repeat dark:bg-babylon-blue-dark"
 				style={{ backgroundImage: 'url(src/assets/Babylon_Leaf_White.png)' }}
 			>
 				<div className="flex items-center justify-center space-x-3">
@@ -29,21 +26,23 @@ export default function App() {
 							<img src="/src/assets/Babylon-Logo.png" />
 						</picture>
 					</a>
-					<h1 className="text-babylon-blue-dark pb-8 pt-8 font-sans text-3xl font-semibold sm:text-xl md:text-3xl lg:text-5xl dark:text-white">
+					<h1 className="pb-8 pt-8 font-sans text-3xl font-semibold text-babylon-blue-dark sm:text-xl md:text-3xl lg:text-5xl dark:text-white">
 						MICRO - BOT
 					</h1>
 				</div>
 
 				<ChatInterface />
-				<button onClick={()=> setButtonPopup(!buttonPopup)}>
-				<img
-					className="inline-block h-8 w-8 md:h-12 md:w-12 lg:h-12 lg:w-12 fixed top-5 left-5"
-					src="/src/assets/star.png"
-					alt="logo"
-				/>
+
+				<button onClick={() => setButtonPopup(!buttonPopup)}>
+					<img
+						className="fixed left-5 top-5 inline-block h-8 w-8 md:h-12 md:w-12 lg:h-12 lg:w-12"
+						src="/src/assets/star.png"
+						alt="logo"
+					/>
 				</button>
+
 				<PopUp trigger={buttonPopup}>
-					<h3 className="title">Rate Micro-Bot!</h3>
+					<h3 className="flex justify-center text-babylon-blue-dark">Rate Micro-Bot!</h3>
 					<StarRating />
 				</PopUp>
 			</div>
