@@ -6,7 +6,6 @@ export const ChatInterface = () => {
 	const [text, setText] = useState('')
 	const [textArray, setTextArray] = useState([])
 	const [thread_id, setThreadID] = useState('')
-	const [disabled, setDisabled] = useState(false)
 	const [loading, setLoading] = useState(false)
 	const [isListening, setIsListening] = useState(false)
 	const openai = createOpenAI()
