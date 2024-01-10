@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 
 export default function App() {
+	const [buttonPopup, setButtonPopup] = useState(false)
 	return (
 		<>
 			<div
