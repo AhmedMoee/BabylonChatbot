@@ -222,7 +222,7 @@ export const ChatInterface = () => {
 								/>
 								<button type="button" id="microphone" onClick={() => setIsListening(!isListening)}>
 									<img
-										className="inline-block h-8 w-8 rounded-full ring ring-white md:h-12 md:w-12 lg:h-12 lg:w-12"
+										className="inline-block h-8 w-8 md:h-12 md:w-12 lg:h-12 lg:w-12"
 										src={
 											isListening
 												? '/src/assets/Microphone-Active-Icon.png'
