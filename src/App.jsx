@@ -12,7 +12,7 @@ export default function App() {
 				className="h-dvh bg-babylon-blue-light bg-25% bg-center bg-no-repeat dark:bg-babylon-blue-dark"
 				style={{ backgroundImage: 'url(src/assets/Babylon_Leaf_White.png)' }}
 			>
-				<div className="flex items-center justify-center space-x-3">
+				<div className="flex items-center justify-center space-x-3 pb-8">
 					<a
 						className="inline-block w-2/5 md:w-1/5 lg:w-1/5"
 						href="https://babylonmicrofarms.com/"
@@ -33,18 +33,20 @@ export default function App() {
 
 				<ChatInterface />
 
-				<button onClick={() => setButtonPopup(!buttonPopup)}>
-					<img
-						className="fixed left-5 top-5 inline-block h-8 w-8 md:h-12 md:w-12 lg:h-12 lg:w-12"
-						src="/src/assets/star.png"
-						alt="logo"
-					/>
-				</button>
+				<div className="h-18 top-7/8 fixed w-dvw bg-babylon-blue-dark p-5 sm:left-0 sm:top-0 sm:h-dvh sm:w-auto md:left-0 md:top-0 md:h-dvh md:w-auto lg:left-0 lg:top-0 lg:h-dvh lg:w-auto">
+					<button onClick={() => setButtonPopup(!buttonPopup)}>
+						<img
+							className="h-8 w-8 md:h-12 md:w-12 lg:h-12 lg:w-12"
+							src="/src/assets/star.png"
+							alt="logo"
+						/>
+					</button>
 
-				<PopUp trigger={buttonPopup}>
-					<h3 className="flex justify-center text-babylon-blue-dark">Rate Micro-Bot!</h3>
-					<StarRating />
-				</PopUp>
+					<PopUp trigger={buttonPopup}>
+						<h3 className="flex justify-center text-babylon-blue-dark">Rate Micro-Bot!</h3>
+						<StarRating />
+					</PopUp>
+				</div>
 			</div>
 		</>
 	)
