@@ -7,6 +7,8 @@
   align-items: center;
   border-radius: 20px;
   top: 80%;
+  right: -25%;
+  /* hideOnOutsideClick; */
 }
 
 .feedback-btn {
