@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { getThread, createOpenAI, getAssistant } from "../utils.js";
+import "../App.css";
 
 export const ChatInterface = () => {
   const [text, setText] = useState("");
   const [textArray, setTextArray] = useState([]);
   const [thread_id, setThreadID] = useState("");
+  const [disabled, setDisabled] = useState(false);
   const [loading, setLoading] = useState(false);
   const openai = createOpenAI();
   const assistant = getAssistant();
@@ -35,8 +37,7 @@ export const ChatInterface = () => {
       );
       if (retreiveRun.status === "completed") {
         printMessages(thread_id, openai);
-        document.getElementById("input").disabled = false;
-        document.getElementById("button").disabled = false;
+        setDisabled(false);
         setLoading(false);
         return;
       }
@@ -50,14 +51,6 @@ export const ChatInterface = () => {
     let textArr = [];
 
     for (let i = threadMessages.data.length - 1; i >= 0; i--) {
-      let annotations = threadMessages.data[i].content[0].text.annotations;
-
-      for (let j = 0; j < annotations.length; j++) {
-        threadMessages.data[i].content[0].text.value = threadMessages.data[
-          i
-        ].content[0].text.value.replace(annotations[j].text, "");
-      }
-
       textArr.push({
         role: threadMessages.data[i].role,
         message: threadMessages.data[i].content[0].text.value,
@@ -180,26 +173,44 @@ export const ChatInterface = () => {
                 setText("");
                 setLoading(true);
                 cycle(text, thread_id, assistant, openai);
-                document.getElementById("input").disabled = true;
-                document.getElementById("button").disabled = true;
+                setDisabled(true);
               }}
             >
-              <div className="flex items-center justify-center space-x-5">
-                <input
-                  className=" flex-auto rounded-xl p-3 text-black drop-shadow-lg placeholder:text-black"
-                  type="text"
-                  id="input"
-                  placeholder="Enter a question"
-                  value={text}
-                  onChange={(event) => setText(event.target.value)}
-                />
-                <input
-                  id="button"
-                  type="submit"
-                  value="Enter"
-                  className=" dark:bg-babylon-blue-light bg-babylon-blue-dark hidden rounded-xl p-3 text-white md:block lg:block"
-                />
-              </div>
+              {disabled ? (
+                <div className="flex items-center justify-center space-x-5">
+                  <input
+                    disabled
+                    className=" flex-auto rounded-xl p-3 text-black drop-shadow-lg placeholder:text-black"
+                    type="text"
+                    id="input"
+                    placeholder="Enter a question"
+                    value={text}
+                    onChange={(event) => setText(event.target.value)}
+                  />
+                  <input
+                    disabled
+                    type="submit"
+                    value="Enter"
+                    className=" bg-babylon-blue-dark dark:bg-babylon-blue-light hidden rounded-xl p-3 text-white md:block lg:block"
+                  />
+                </div>
+              ) : (
+                <div className="flex items-center justify-center space-x-5">
+                  <input
+                    className=" flex-auto rounded-xl p-3 text-black drop-shadow-lg placeholder:text-black"
+                    type="text"
+                    id="input"
+                    placeholder="Enter a question"
+                    value={text}
+                    onChange={(event) => setText(event.target.value)}
+                  />
+                  <input
+                    type="submit"
+                    value="Enter"
+                    className=" dark:bg-babylon-blue-light bg-babylon-blue-dark hidden rounded-xl p-3 text-white md:block lg:block"
+                  />
+                </div>
+              )}
             </form>
           </div>
         </div>

@@ -2,7 +2,7 @@ import OpenAI from 'openai'
 
 const assistant = import.meta.env.VITE_ASSISTANT_ID
 const apiKey = import.meta.env.VITE_OPENAI_API_KEY
-
+	
 export const createOpenAI = () => {
 	return new OpenAI({
 		apiKey: apiKey,
