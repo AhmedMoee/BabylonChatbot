@@ -4,26 +4,26 @@
 Using the OpenAI API, this is a chat bot trained to assist with Babylon Micro-Farms primary product, the Galleri Micro-Farm. It includes additional features such as adjusting to your devices light/dark mode settings and supporting various screen sizes ranging from a laptop to a phone. 
 
 ## To Use
-### To Install (do they mean from git as dev mode? I think so)
+### To Install
 Download the code from the GitHub repository
 Open it within your IDE of choice
 
 ### Required downloads
 You will need to ensure you have various packages downloaded onto your computer before running. Run the following commands:
-npm install react
-npm install openai
-npm install -D tailwindcss postcss autoprefixer
+* npm install react
+* npm install openai
+* npm install -D tailwindcss postcss autoprefixer
 
 ### To Run
-Open your terminal, navigate to the project directory ‘cd BabylonChatbot’
-Run the command ‘npm install’ to install the required dependencies
-Once complete, you can run the command ‘npm run dev’ to set up the site for the application
-Open your browser and navigate to the site where the chatbot is hosted
-Interact with the chatbot on the site
+* Open your terminal, navigate to the project directory ‘cd BabylonChatbot’
+* Run the command ‘npm install’ to install the required dependencies
+* Once complete, you can run the command ‘npm run dev’ to set up the site for the application
+* Open your browser and navigate to the site where the chatbot is hosted
+* Interact with the chatbot on the site
 
 ### Needed Environment Variables (.env file included in .gitignore)
-VITE_OPENAI_API_KEY
-VITE_ASSISTANT_ID *if you are creating your assistant within the code, this is not necessary
+* VITE_OPENAI_API_KEY
+* VITE_ASSISTANT_ID *if you are creating your assistant within the code, this is not necessary
 
 ### External Setup needed
 Creating an OpenAI account and setting up an assistant (not necessary if assistant ID is provided)
@@ -43,9 +43,9 @@ Creating an OpenAI account and setting up an assistant (not necessary if assista
 
 
 ## Credits
-Programs Used: Vite, React, OpenAI, Tailwind CSS
-Forge Crash Course SWE for guidance
-Special thanks to lead instructor Byron and teaching assistant Simon for guiding us throughout this project
+* Programs Used: Vite, React, OpenAI, Tailwind CSS
+* Forge Crash Course SWE for guidance
+* Special thanks to lead instructor Byron and teaching assistant Simon for guiding us throughout this project
 
 
 ### Contributors
