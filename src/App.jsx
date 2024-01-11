@@ -31,7 +31,7 @@ export default function App() {
 		<div className={colorScheme}>
 			<div className="flex h-dvh w-dvw gap-0 bg-babylon-blue-light dark:bg-babylon-blue-dark">
 				<div
-					className="w-1/16 z-40 hidden content-center gap-10 bg-babylon-blue-dark p-5 pt-10 sm:flex sm:flex-col dark:bg-babylon-blue-light"
+					className="w-1/16 min-w-18 z-40 hidden content-center gap-10 bg-babylon-blue-dark p-5 pt-10 sm:flex sm:flex-col dark:bg-babylon-blue-light"
 					ref={popUpRef}
 				>
 					<button className="hover:animate-vote" onClick={() => setProfilePopup(!profilePopup)}>
