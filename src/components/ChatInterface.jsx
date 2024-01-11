@@ -166,7 +166,11 @@ export const ChatInterface = () => {
 										{element.message}
 									</p>
 									<div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-babylon-blue-light text-white ring ring-white sm:text-base md:h-12 md:w-12 md:text-lg lg:h-12 lg:w-12 lg:text-xl dark:bg-babylon-blue-dark">
-										AF
+										<img
+											className="inline-block h-8 w-8 rounded-full ring ring-white md:h-12 md:w-12 lg:h-12 lg:w-12"
+											src="/src/assets/user.png"
+											alt="logo"
+										/>
 									</div>
 								</div>
 							)
