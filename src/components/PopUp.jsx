@@ -2,12 +2,17 @@ import '../App.css'
 
 export const PopUp = (props) => {
 	return props.trigger ? (
-		<div className="fixed top-10 flex-auto rounded-xl p-3 text-black drop-shadow-lg placeholder:text-black">
-			<div className="min-w-120 max-w-120 relative -right-1/4 top-3/4 w-full items-center rounded-3xl bg-white p-16">
-				{props.children}
-			</div>
-		</div>
-	) : (
-		''
-	)
+        <div className="fixed inset-0 bg-transparent">
+            <div 
+                className="absolute inset-0" 
+                onClick={props.onClose}
+            />
+            <div 
+                className="fixed top-20 sm:left-4% md:left-6% lg:left-8% p-5 md:p-10 lg:p-16 bg-white rounded-3xl shadow-lg"
+                style={{ width: '80%', maxWidth: '30rem' , left: '8%'}}
+            >
+                {props.children}
+            </div>
+        </div>
+    ) : null;
 }
