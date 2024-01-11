@@ -107,9 +107,27 @@ export const ChatInterface = () => {
 
 	return (
 		<>
-			<div className="flex items-center justify-center text-base font-medium sm:text-lg md:text-xl lg:text-xl">
+			<div className=" flex items-center justify-center text-base font-medium sm:text-lg md:text-xl lg:text-xl">
 				<div className="space-y-5">
-					<div className="max-h-[58vh] min-h-[58vh] min-w-[90vw] max-w-[90vw] space-y-10 overflow-y-auto rounded-3xl bg-gray-200 bg-opacity-30 p-5 shadow-2xl backdrop-blur-sm sm:max-h-[70vh] sm:min-h-[70vh] sm:min-w-[60vw] sm:max-w-[60vw] md:max-h-[70vh] md:min-h-[70vh] md:min-w-[60vw] md:max-w-[60vw] lg:max-h-[70vh] lg:min-h-[70vh] lg:min-w-[60vw] lg:max-w-[60vw]">
+					<div className="h-[80vh] space-y-10 overflow-y-auto rounded-3xl bg-gray-200 bg-opacity-0 p-5 backdrop-blur-none sm:h-[80vh] md:h-[85vh] lg:h-[85vh] lg:w-[80vw] xl:h-[85vh] 2xl:h-[90vh]">
+						<div>
+							<a
+								className="inline-block w-2/5 md:w-1/5 lg:w-1/5"
+								href="https://babylonmicrofarms.com/"
+								target="_blank"
+							>
+								<picture alt="logo">
+									<source
+										srcSet="/src/assets/Babylon-Logo-White.png"
+										media="(prefers-color-scheme:dark)"
+									/>
+									<img src="/src/assets/Babylon-Logo-White.png" />
+								</picture>
+							</a>
+							<h1 className="text-md sm:text-md font-sans font-semibold text-babylon-blue-dark md:text-lg lg:text-2xl dark:text-babylon-blue-light">
+								MICRO - BOT
+							</h1>
+						</div>
 						<div className="mr-[67.5px] flex items-start justify-start space-x-5">
 							<img
 								className="inline-block h-8 w-8 rounded-full ring ring-white md:h-12 md:w-12 lg:h-12 lg:w-12"
@@ -165,7 +183,7 @@ export const ChatInterface = () => {
 									>
 										{element.message}
 									</p>
-									<div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-babylon-blue-light text-white ring ring-white sm:text-base md:h-12 md:w-12 md:text-lg lg:h-12 lg:w-12 lg:text-xl dark:bg-babylon-blue-dark">
+									<div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-babylon-blue-dark text-white ring ring-white sm:text-base md:h-12 md:w-12 md:text-lg lg:h-12 lg:w-12 lg:text-xl dark:bg-babylon-blue-light">
 										<img
 											className="inline-block h-8 w-8 rounded-full ring ring-white md:h-12 md:w-12 lg:h-12 lg:w-12"
 											src="/src/assets/user.png"
@@ -201,7 +219,7 @@ export const ChatInterface = () => {
 						)}
 					</div>
 
-					<div>
+					<div className="">
 						<form
 							onSubmit={(event) => {
 								event.preventDefault()
@@ -215,36 +233,34 @@ export const ChatInterface = () => {
 								console.log('submitting form')
 							}}
 						>
-							<div className="flex items-center justify-center space-x-5">
+							<div className="relative flex flex-row items-end justify-center">
 								<input
-									className=" flex-auto rounded-xl p-3 text-black drop-shadow-lg placeholder:text-black"
+									className=" flex-auto rounded-3xl border-2 border-slate-300 bg-white p-3 text-black drop-shadow-lg placeholder:italic placeholder:text-slate-400 focus:border-babylon-blue-dark focus:outline-none focus:ring-1 focus:ring-babylon-blue-dark dark:focus:border-babylon-blue-light dark:focus:ring-babylon-blue-light"
 									type="text"
 									id="input"
-									placeholder="Enter a question"
+									placeholder="Message Micro-Bot..."
 									value={text}
 									onChange={(event) => setText(event.target.value)}
 								/>
+								<input
+									className=" absolute right-0 inline-block h-full rounded-r-3xl bg-babylon-blue-dark text-white dark:bg-babylon-blue-light"
+									type="image"
+									id="button"
+									name="submit"
+									src="/src/assets/next.png"
+									alt="Submit"
+								/>
 								<button
-									className=""
+									className="absolute right-12 inline-block aspect-square h-full bg-babylon-blue-dark p-3 dark:bg-babylon-blue-light"
 									type="button"
 									id="microphone"
 									onClick={() => setIsListening(!isListening)}
 								>
 									<img
-										className="inline-block h-8 w-8 md:h-10 md:w-10 lg:h-10 lg:w-10"
-										src={
-											isListening
-												? '/src/assets/Microphone-Active-Icon.png'
-												: '/src/assets/Microphone-Icon.png'
-										}
+										className=""
+										src={isListening ? '/src/assets/Mic-Active.png' : '/src/assets/Mic.png'}
 									></img>
 								</button>
-								<input
-									type="submit"
-									id="button"
-									value="Enter"
-									className=" hidden rounded-xl bg-babylon-blue-dark p-3 text-white md:block lg:block dark:bg-babylon-blue-light"
-								/>
 							</div>
 						</form>
 					</div>
