@@ -49,13 +49,23 @@ export default function App() {
 				<ChatInterface />
 
 				<div ref={popUpRef} className="h-18 top-7/8 fixed w-dvw bg-babylon-blue-dark p-5 sm:left-0 sm:top-0 sm:h-dvh sm:w-auto md:left-0 md:top-0 md:h-dvh md:w-auto lg:left-0 lg:top-0 lg:h-dvh lg:w-auto">
-					<button onClick={() => setButtonPopup(!buttonPopup)}>
-						<img
-							className="h-8 w-8 md:h-12 md:w-12 lg:h-12 lg:w-12"
-							src="/src/assets/star.png"
-							alt="logo"
-						/>
-					</button>
+					<div className="flex flex-col items-center ">
+						<button onClick={() => setButtonPopup(!buttonPopup)}>
+							<img
+								className="h-8 w-8 md:h-12 md:w-12 lg:h-12 lg:w-12"
+								src="/src/assets/star.png"
+								alt="logo"
+							/>
+						</button>
+
+						<a 
+							className='inline-block mt-2 text-white ring-2 ring-white rounded px-4 py-2 hover:bg-white hover:text-babylon-blue-dark transition-colors'
+							href="https://babylonmicrofarms.com/faq/" 
+							target="_blank"
+						>
+							FAQ
+						</a>
+					</div>
 
 					<PopUp trigger={buttonPopup} onClose={() => setButtonPopup(false)}>
 						<h3 className="flex justify-center text-babylon-blue-dark">Rate Micro-Bot!</h3>
