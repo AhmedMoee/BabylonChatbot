@@ -38,6 +38,10 @@ export default function App() {
 						<img className="" src="/src/assets/Profile-Icon.png" alt="logo" />
 					</button>
 
+					<button className="hover:animate-vote">
+						<img className="" src="/src/assets/layout.png" alt="logo" />
+					</button>
+
 					<button className="hover:animate-vote" onClick={() => setRatingPopup(!ratingPopup)}>
 						<img className="" src="/src/assets/Star-Icon.png" alt="logo" />
 					</button>
@@ -194,7 +198,7 @@ export default function App() {
 					<ChatInterface />
 
 					<div
-						className=" h-1/26 z-40 m-5 mt-4 flex flex-row content-center gap-10 sm:hidden"
+						className=" h-1/26 z-40 m-5 mt-4 flex flex-row content-center gap-8 sm:hidden"
 						ref={popUpRef}
 					>
 						<button
@@ -202,6 +206,10 @@ export default function App() {
 							onClick={() => setProfilePopup(!profilePopup)}
 						>
 							<img className="" src="/src/assets/Profile-Icon.png" alt="logo" />
+						</button>
+
+						<button className="hover:animate-vote">
+							<img className="" src="/src/assets/layout.png" alt="logo" />
 						</button>
 
 						<button className="hover:animate-vote" onClick={() => setRatingPopup(!ratingPopup)}>
@@ -353,8 +361,6 @@ export default function App() {
 						</PopUp>
 					</div>
 				</div>
-
-				{/* Horizontal bar for mobile */}
 			</div>
 		</div>
 	)
