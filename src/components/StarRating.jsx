@@ -44,34 +44,28 @@ export const StarRating = () => {
 				})}
 			</div>
 			{rating === 1 && (
-				<h4 className="flex justify-center pt-1.5 text-lg font-medium text-babylon-blue-dark">
+				<h4 className="flex justify-center pt-1.5 text-center text-lg font-medium text-babylon-blue-dark">
 					We will continue to improve Micro-Bot
 				</h4>
 			)}
 			{rating === 2 && (
-				<h4 className="flex justify-center pt-1.5 text-lg font-medium text-babylon-blue-dark">
+				<h4 className="flex justify-center pt-1.5 text-center text-lg font-medium text-babylon-blue-dark">
 					We will continue to improve Micro-Bot
 				</h4>
 			)}
 			{rating === 3 && (
-				<h4 className="flex justify-center pt-1.5 text-lg font-medium text-babylon-blue-dark">
+				<h4 className="flex justify-center pt-1.5 text-center text-lg font-medium text-babylon-blue-dark">
 					Thank you for your rating!
 				</h4>
 			)}
 			{rating === 4 && (
-				<h4 className="flex justify-center pt-1.5 text-lg font-medium text-babylon-blue-dark">
+				<h4 className="flex justify-center pt-1.5 text-center text-lg font-medium text-babylon-blue-dark">
 					Thank you for your rating!
 				</h4>
 			)}
 			{rating === 5 && (
-				<h4 className="flex justify-center pt-1.5 text-lg font-medium text-babylon-blue-dark">
+				<h4 className="flex justify-center pt-1.5 text-center text-lg font-medium text-babylon-blue-dark">
 					Thank you for your rating!
-				</h4>
-			)}
-			{rating && (
-				<h4 className="flex justify-center pt-1.5 text-lg font-medium text-babylon-blue-dark">
-					<br />
-					Your Rating Is {rating}
 				</h4>
 			)}
 		</div>

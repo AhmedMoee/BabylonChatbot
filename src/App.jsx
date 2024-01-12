@@ -62,7 +62,7 @@ export default function App() {
 					</button>
 
 					<PopUp trigger={ratingPopup} onClose={() => setRatingPopup(false)}>
-						<h3 className="flex justify-center text-2xl font-bold text-babylon-blue-dark">
+						<h3 className="flex justify-center pt-10 text-2xl font-medium text-babylon-blue-dark">
 							Rate Micro-Bot!
 						</h3>
 						<StarRating />
@@ -70,7 +70,7 @@ export default function App() {
 
 					<PopUp trigger={profilePopup} onClose={() => setProfilePopup(false)}>
 						{isProfileSet ? (
-							<div className="relative flex flex-col items-center justify-center gap-10 text-2xl">
+							<div className="relative flex flex-col items-center justify-center gap-10 pt-10 text-2xl">
 								<div className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-babylon-blue-dark text-white ring ring-white dark:bg-babylon-blue-light sm:text-base md:h-16 md:w-16 md:text-lg lg:h-16 lg:w-16 lg:text-xl">
 									<img
 										className="inline-block h-12 w-12 rounded-full ring ring-white md:h-16 md:w-16 lg:h-16 lg:w-16"
@@ -78,7 +78,7 @@ export default function App() {
 										alt="logo"
 									/>
 								</div>
-								<p className="flex text-babylon-blue-dark">{username}</p>
+								<p className="flex font-medium text-babylon-blue-dark">{username}</p>
 							</div>
 						) : (
 							<form
@@ -88,7 +88,7 @@ export default function App() {
 									setIsProfileSet(true)
 								}}
 							>
-								<div className="relative flex flex-col items-center justify-center gap-10">
+								<div className="relative flex flex-col items-center justify-center gap-10 pt-10">
 									<input
 										className="block w-full rounded-3xl border border-slate-300 bg-white py-2 pl-9 pr-3 font-medium drop-shadow-lg placeholder:italic placeholder:text-slate-400 focus:border-babylon-blue-dark focus:outline-none focus:ring-1 focus:ring-babylon-blue-dark sm:text-base"
 										type="text"
@@ -119,7 +119,7 @@ export default function App() {
 					</PopUp>
 
 					<PopUp trigger={faqPopup} onClose={() => setFaqPopup(false)}>
-						<div className="flex flex-col justify-center gap-5 text-pretty text-babylon-blue-dark">
+						<div className="flex h-full flex-col gap-5 overflow-y-auto text-pretty text-babylon-blue-dark">
 							<div>
 								<p className="text-2xl font-bold">What is hydroponics?</p>
 								<p className="text-lg font-medium">
@@ -232,7 +232,7 @@ export default function App() {
 						</button>
 
 						<PopUp trigger={ratingPopup} onClose={() => setRatingPopup(false)}>
-							<h3 className="flex justify-center text-2xl font-bold text-babylon-blue-dark">
+							<h3 className="flex justify-center pt-20 text-2xl font-medium text-babylon-blue-dark">
 								Rate Micro-Bot!
 							</h3>
 							<StarRating />
@@ -240,7 +240,7 @@ export default function App() {
 
 						<PopUp trigger={profilePopup} onClose={() => setProfilePopup(false)}>
 							{isProfileSet ? (
-								<div className="relative flex flex-col items-center justify-center gap-10 text-2xl">
+								<div className="relative flex flex-col items-center justify-center gap-10 pt-20 text-2xl">
 									<div className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-babylon-blue-dark text-white ring ring-white dark:bg-babylon-blue-light sm:text-base md:h-16 md:w-16 md:text-lg lg:h-16 lg:w-16 lg:text-xl">
 										<img
 											className="inline-block h-12 w-12 rounded-full ring ring-white md:h-16 md:w-16 lg:h-16 lg:w-16"
@@ -248,7 +248,7 @@ export default function App() {
 											alt="logo"
 										/>
 									</div>
-									<p className="flex text-babylon-blue-dark">{username}</p>
+									<p className="flex font-medium text-babylon-blue-dark">{username}</p>
 								</div>
 							) : (
 								<form
@@ -258,7 +258,7 @@ export default function App() {
 										setIsProfileSet(true)
 									}}
 								>
-									<div className="relative flex flex-col items-center justify-center gap-10">
+									<div className="relative flex flex-col items-center justify-center gap-10 pt-16">
 										<input
 											className="block w-full rounded-3xl border border-slate-300 bg-white py-2 pl-9 pr-3 font-medium drop-shadow-lg placeholder:italic placeholder:text-slate-400 focus:border-babylon-blue-dark focus:outline-none focus:ring-1 focus:ring-babylon-blue-dark sm:text-base"
 											type="text"
@@ -288,17 +288,17 @@ export default function App() {
 							)}
 						</PopUp>
 
-						<PopUp trigger={faqPopup} onClose={() => setFaqPopup(false)}>
-							<div className="flex flex-col justify-center gap-5 text-pretty text-babylon-blue-dark">
+						<PopUp className="" trigger={faqPopup} onClose={() => setFaqPopup(false)}>
+							<div className="flex h-full flex-col gap-5 overflow-y-auto text-pretty text-babylon-blue-dark">
 								<div>
-									<p className="text-2xl font-bold">What is hydroponics?</p>
+									<p className="text-xl font-bold">What is hydroponics?</p>
 									<p className="text-lg font-medium">
 										Hydroponics is the growing of plants without soil, whereby nutrients are
 										delivered to plants via water.
 									</p>
 								</div>
 								<div>
-									<p className="text-2xl font-bold">Why hydroponics?</p>
+									<p className="text-xl font-bold">Why hydroponics?</p>
 									<p className="text-lg font-medium">
 										Because it is better for the planet! Hydroponically grown greens use 90% less
 										water than traditional methods, all without the use of harmful pesticides. Plus
@@ -306,7 +306,7 @@ export default function App() {
 									</p>
 								</div>
 								<div>
-									<p className="text-2xl font-bold">How do the Micro-Farms work?</p>
+									<p className="text-xl font-bold">How do the Micro-Farms work?</p>
 									<p className="text-lg font-medium">
 										Each Micro-Farm features sophisticated software and sensors that work together
 										to ensure crops get just the right amount of light, water and nutrients. And
@@ -315,13 +315,13 @@ export default function App() {
 									</p>
 								</div>
 								<div>
-									<p className="text-2xl font-bold">How much does one cost?</p>
+									<p className="text-xl font-bold">How much does one cost?</p>
 									<p className="text-lg font-medium">
 										There are several different pricing options. Please contact us to learn more.
 									</p>
 								</div>
 								<div>
-									<p className="text-2xl font-bold">How much work is involved in growing?</p>
+									<p className="text-xl font-bold">How much work is involved in growing?</p>
 									<p className="text-lg font-medium">
 										Our technology and mobile app make it simple to operate. Farming typically takes
 										an hour or so per week. We also have partners in select cities who can handle
@@ -329,7 +329,7 @@ export default function App() {
 									</p>
 								</div>
 								<div>
-									<p className="text-2xl font-bold">Why is the company called Babylon?</p>
+									<p className="text-xl font-bold">Why is the company called Babylon?</p>
 									<p className="text-lg font-medium">
 										Our founders Alexander and Graham drew inspiration from the proto-hydroponics of
 										the hanging gardens of Babylon, one of the original seven wonders of the ancient
@@ -337,24 +337,24 @@ export default function App() {
 									</p>
 								</div>
 								<div>
-									<p className="text-2xl font-bold">Do you offer a farm for personal use?</p>
+									<p className="text-xl font-bold">Do you offer a farm for personal use?</p>
 									<p className="text-lg font-medium">Not at this time.</p>
 								</div>
 								<div>
-									<p className="text-2xl font-bold">Do your farms grow marijuana?</p>
+									<p className="text-xl font-bold">Do your farms grow marijuana?</p>
 									<p className="text-lg font-medium">
 										No. Our customers use their Micro-Farms to grow leafy greens, herbs, edible
 										flowers, and microgreens.
 									</p>
 								</div>
 								<div>
-									<p className="text-2xl font-bold">Do you ship outside the US?</p>
+									<p className="text-xl font-bold">Do you ship outside the US?</p>
 									<p className="text-lg font-medium">
 										Yes. We currently have a number of clients outside the US.
 									</p>
 								</div>
 								<div>
-									<p className="text-2xl font-bold">Are you hiring?</p>
+									<p className="text-xl font-bold">Are you hiring?</p>
 									<p className="text-lg font-medium">Please visit our careers page.</p>
 								</div>
 							</div>
