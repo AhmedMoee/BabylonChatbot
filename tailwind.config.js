@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin')
 export default {
 	content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
 	darkMode: 'class',
@@ -34,7 +35,8 @@ export default {
 				xs: '2px'
 			},
 			animation: {
-				vote: 'vote 1.5s ease-in-out infinite'
+				vote: 'vote 1.5s ease-in-out infinite',
+				bounce: 'bounce 1s infinite'
 			},
 			keyframes: {
 				vote: {
@@ -44,9 +46,36 @@ export default {
 					'50%': {
 						transform: 'rotate(20deg)'
 					}
+				},
+				bounce: {
+					'0%, 100%': {
+						transform: 'translateY(-100%)',
+						'animation-timing-function': 'cubic-bezier(0.8, 0, 1, 1)',
+						opacity: '1'
+					},
+					'50%': {
+						transform: 'translateY(0)',
+						'animation-timing-function': 'cubic-bezier(0, 0, 0.2, 1)',
+						opacity: '0.5'
+					}
 				}
 			}
 		}
 	},
-	plugins: []
+	plugins: [
+		plugin(({ matchUtilities, theme }) => {
+			matchUtilities(
+				{
+					'animation-delay': (value) => {
+						return {
+							'animation-delay': value
+						}
+					}
+				},
+				{
+					values: theme('transitionDelay')
+				}
+			)
+		})
+	]
 }
