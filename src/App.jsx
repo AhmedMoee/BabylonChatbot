@@ -7,6 +7,8 @@ import { useState, useEffect, useRef } from 'react'
 export default function App() {
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
+	const [savedUsername, setSavedUsername] = useState('')
+	const [savedPassword, setSavedPassword] = useState('')
 	const [ratingPopup, setRatingPopup] = useState(false)
 	const [profilePopup, setProfilePopup] = useState(false)
 	const [faqPopup, setFaqPopup] = useState(false)
@@ -70,7 +72,7 @@ export default function App() {
 
 					<PopUp trigger={profilePopup} onClose={() => setProfilePopup(false)}>
 						{isProfileSet ? (
-							<div className="relative flex flex-col items-center justify-center gap-10 pt-10 text-2xl">
+							<div className="relative flex flex-col items-center justify-center gap-10 pt-6 text-2xl">
 								<div className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-babylon-blue-dark text-white ring ring-white dark:bg-babylon-blue-light sm:text-base md:h-16 md:w-16 md:text-lg lg:h-16 lg:w-16 lg:text-xl">
 									<img
 										className="inline-block h-12 w-12 rounded-full ring ring-white md:h-16 md:w-16 lg:h-16 lg:w-16"
@@ -78,7 +80,20 @@ export default function App() {
 										alt="logo"
 									/>
 								</div>
-								<p className="flex font-medium text-babylon-blue-dark">{username}</p>
+								<p className="flex font-medium text-babylon-blue-dark">{savedUsername}</p>
+								<form
+									onSubmit={(event) => {
+										event.preventDefault()
+										setIsProfileSet(false)
+									}}
+								>
+									<input
+										type="submit"
+										id="button"
+										value="Log out"
+										className=" rounded-3xl border-2 border-babylon-blue-dark bg-white px-4 py-1 text-sm font-semibold text-black hover:border-transparent hover:bg-babylon-blue-dark hover:text-white focus:outline-none focus:ring-2 focus:ring-babylon-blue-dark focus:ring-offset-2"
+									/>
+								</form>
 							</div>
 						) : (
 							<form
@@ -86,6 +101,8 @@ export default function App() {
 								onSubmit={(event) => {
 									event.preventDefault()
 									setIsProfileSet(true)
+									setUsername('')
+									setPassword('')
 								}}
 							>
 								<div className="relative flex flex-col items-center justify-center gap-10 pt-10">
@@ -95,7 +112,10 @@ export default function App() {
 										id="username"
 										placeholder="Username"
 										value={username}
-										onChange={(event) => setUsername(event.target.value)}
+										onChange={(event) => {
+											setUsername(event.target.value)
+											setSavedUsername(event.target.value)
+										}}
 										required
 									/>
 									<input
@@ -104,7 +124,10 @@ export default function App() {
 										id="password"
 										placeholder="Password"
 										value={password}
-										onChange={(event) => setPassword(event.target.value)}
+										onChange={(event) => {
+											setPassword(event.target.value)
+											setSavedPassword(event.target.value)
+										}}
 										required
 									/>
 									<input
@@ -240,7 +263,7 @@ export default function App() {
 
 						<PopUp trigger={profilePopup} onClose={() => setProfilePopup(false)}>
 							{isProfileSet ? (
-								<div className="relative flex flex-col items-center justify-center gap-10 pt-20 text-2xl">
+								<div className="relative flex flex-col items-center justify-center gap-10 pt-16 text-2xl">
 									<div className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-babylon-blue-dark text-white ring ring-white dark:bg-babylon-blue-light sm:text-base md:h-16 md:w-16 md:text-lg lg:h-16 lg:w-16 lg:text-xl">
 										<img
 											className="inline-block h-12 w-12 rounded-full ring ring-white md:h-16 md:w-16 lg:h-16 lg:w-16"
@@ -248,7 +271,20 @@ export default function App() {
 											alt="logo"
 										/>
 									</div>
-									<p className="flex font-medium text-babylon-blue-dark">{username}</p>
+									<p className="flex font-medium text-babylon-blue-dark">{savedUsername}</p>
+									<form
+										onSubmit={(event) => {
+											event.preventDefault()
+											setIsProfileSet(false)
+										}}
+									>
+										<input
+											type="submit"
+											id="button"
+											value="Log out"
+											className=" rounded-3xl border-2 border-babylon-blue-dark bg-white px-4 py-1 text-sm font-semibold text-black hover:border-transparent hover:bg-babylon-blue-dark hover:text-white focus:outline-none focus:ring-2 focus:ring-babylon-blue-dark focus:ring-offset-2"
+										/>
+									</form>
 								</div>
 							) : (
 								<form
@@ -256,6 +292,8 @@ export default function App() {
 									onSubmit={(event) => {
 										event.preventDefault()
 										setIsProfileSet(true)
+										setUsername('')
+										setPassword('')
 									}}
 								>
 									<div className="relative flex flex-col items-center justify-center gap-10 pt-16">
@@ -265,7 +303,10 @@ export default function App() {
 											id="username"
 											placeholder="Username"
 											value={username}
-											onChange={(event) => setUsername(event.target.value)}
+											onChange={(event) => {
+												setUsername(event.target.value)
+												setSavedUsername(event.target.value)
+											}}
 											required
 										/>
 										<input
@@ -274,7 +315,10 @@ export default function App() {
 											id="password"
 											placeholder="Password"
 											value={password}
-											onChange={(event) => setPassword(event.target.value)}
+											onChange={(event) => {
+												setPassword(event.target.value)
+												setSavedPassword(event.target.value)
+											}}
 											required
 										/>
 										<input
