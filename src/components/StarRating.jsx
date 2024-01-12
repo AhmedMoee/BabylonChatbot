@@ -45,12 +45,12 @@ export const StarRating = () => {
 			</div>
 			{rating === 1 && (
 				<h4 className="flex justify-center pt-1.5 text-center text-lg font-medium text-babylon-blue-dark">
-					We will continue to improve Micro-Bot
+					We will continue to improve Micro-Bot.
 				</h4>
 			)}
 			{rating === 2 && (
 				<h4 className="flex justify-center pt-1.5 text-center text-lg font-medium text-babylon-blue-dark">
-					We will continue to improve Micro-Bot
+					We will continue to improve Micro-Bot.
 				</h4>
 			)}
 			{rating === 3 && (

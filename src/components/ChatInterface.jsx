@@ -198,9 +198,9 @@ export const ChatInterface = () => {
 							<div className="message assistant-message">
 								<div className="loading-spinner" role="status">
 									<div className="flex items-end justify-start space-x-1.5 ease-in-out">
-										<div className="animation-delay-0 h-4 w-4 animate-bounce rounded-full bg-gray-300 sm:h-5 sm:w-5"></div>
-										<div className="animation-delay-75 h-4 w-4 animate-bounce rounded-full bg-gray-200 sm:h-5 sm:w-5"></div>
-										<div className="animation-delay-150 h-4 w-4 animate-bounce rounded-full bg-gray-100 sm:h-5 sm:w-5"></div>
+										<div className="h-4 w-4 animate-bounce rounded-full bg-gray-300 animation-delay-0 sm:h-5 sm:w-5"></div>
+										<div className="h-4 w-4 animate-bounce rounded-full bg-gray-200 animation-delay-75 sm:h-5 sm:w-5"></div>
+										<div className="h-4 w-4 animate-bounce rounded-full bg-gray-100 animation-delay-150 sm:h-5 sm:w-5"></div>
 									</div>
 								</div>
 							</div>
@@ -229,6 +229,7 @@ export const ChatInterface = () => {
 									placeholder="Message Micro-Bot..."
 									value={text}
 									onChange={(event) => setText(event.target.value)}
+									required
 								/>
 								<input
 									className=" absolute right-0 inline-block h-full rounded-r-3xl bg-babylon-blue-dark text-white dark:bg-babylon-blue-light"
