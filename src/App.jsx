@@ -78,6 +78,7 @@ export default function App() {
 							</div>
 						) : (
 							<form
+								autoComplete="off"
 								onSubmit={(event) => {
 									event.preventDefault()
 									setIsProfileSet(true)
@@ -243,6 +244,7 @@ export default function App() {
 								</div>
 							) : (
 								<form
+									autoComplete="off"
 									onSubmit={(event) => {
 										event.preventDefault()
 										setIsProfileSet(true)

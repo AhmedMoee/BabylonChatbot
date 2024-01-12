@@ -124,7 +124,7 @@ export const ChatInterface = () => {
 									<img src="/src/assets/Babylon-Logo-White.png" />
 								</picture>
 							</a>
-							<h1 className="text-md sm:text-md font-sans font-semibold text-babylon-blue-dark md:text-lg lg:text-2xl dark:text-babylon-blue-light">
+							<h1 className="text-md sm:text-md font-sans font-semibold text-babylon-blue-dark dark:text-babylon-blue-light md:text-lg lg:text-2xl">
 								MICRO - BOT
 							</h1>
 						</div>
@@ -183,7 +183,7 @@ export const ChatInterface = () => {
 									>
 										{element.message}
 									</p>
-									<div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-babylon-blue-dark text-white ring ring-white sm:text-base md:h-12 md:w-12 md:text-lg lg:h-12 lg:w-12 lg:text-xl dark:bg-babylon-blue-light">
+									<div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-babylon-blue-dark text-white ring ring-white dark:bg-babylon-blue-light sm:text-base md:h-12 md:w-12 md:text-lg lg:h-12 lg:w-12 lg:text-xl">
 										<img
 											className="inline-block h-8 w-8 rounded-full ring ring-white md:h-12 md:w-12 lg:h-12 lg:w-12"
 											src="/src/assets/user.png"
@@ -221,6 +221,7 @@ export const ChatInterface = () => {
 
 					<div className="">
 						<form
+							autoComplete="off"
 							onSubmit={(event) => {
 								event.preventDefault()
 								setTextArray((textArray) => [...textArray, { role: 'user', message: text }])
@@ -230,7 +231,6 @@ export const ChatInterface = () => {
 								document.getElementById('input').disabled = true
 								document.getElementById('button').disabled = true
 								document.getElementById('microphone').disabled = true
-								console.log('submitting form')
 							}}
 						>
 							<div className="relative flex flex-row items-end justify-center">
