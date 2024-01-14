@@ -118,10 +118,10 @@ export const ChatInterface = () => {
 							>
 								<picture alt="logo">
 									<source
-										srcSet="/src/assets/Babylon-Logo-White.png"
+										srcSet="/public/assets/Babylon-Logo-White.png"
 										media="(prefers-color-scheme:dark)"
 									/>
-									<img src="/src/assets/Babylon-Logo-White.png" />
+									<img src="/public/assets/Babylon-Logo-White.png" />
 								</picture>
 							</a>
 							<h1 className="text-md sm:text-md font-sans font-semibold text-babylon-blue-dark dark:text-babylon-blue-light md:text-lg lg:text-2xl">
@@ -131,7 +131,7 @@ export const ChatInterface = () => {
 						<div className="mr-[67.5px] flex items-start justify-start space-x-5">
 							<img
 								className="inline-block h-8 w-8 rounded-full ring ring-white md:h-12 md:w-12 lg:h-12 lg:w-12"
-								src="/src/assets/Babylon-Profile-Image.jpg"
+								src="/public/assets/Babylon-Profile-Image.jpg"
 								alt="logo"
 							/>
 							<p
@@ -145,7 +145,7 @@ export const ChatInterface = () => {
 						<div className="mr-[67.5px] flex items-start justify-start space-x-5">
 							<img
 								className="inline-block h-8 w-8 rounded-full ring ring-white md:h-12 md:w-12 lg:h-12 lg:w-12"
-								src="/src/assets/Babylon-Profile-Image.jpg"
+								src="/public/assets/Babylon-Profile-Image.jpg"
 								alt="logo"
 							/>
 							<p
@@ -162,7 +162,7 @@ export const ChatInterface = () => {
 								<div key={index} className="mr-[67.5px] flex items-start justify-start space-x-5">
 									<img
 										className="inline-block h-8 w-8 rounded-full ring ring-white md:h-12 md:w-12 lg:h-12 lg:w-12"
-										src="/src/assets/Babylon-Profile-Image.jpg"
+										src="/public/assets/Babylon-Profile-Image.jpg"
 										alt="logo"
 									/>
 									<p
@@ -186,7 +186,7 @@ export const ChatInterface = () => {
 									<div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-babylon-blue-dark text-white ring ring-white dark:bg-babylon-blue-light sm:text-base md:h-12 md:w-12 md:text-lg lg:h-12 lg:w-12 lg:text-xl">
 										<img
 											className="inline-block h-8 w-8 rounded-full ring ring-white md:h-12 md:w-12 lg:h-12 lg:w-12"
-											src="/src/assets/user.png"
+											src="/public/assets/user.png"
 											alt="logo"
 										/>
 									</div>
@@ -247,7 +247,7 @@ export const ChatInterface = () => {
 								>
 									<img
 										className=""
-										src={isListening ? '/src/assets/Mic-Active.png' : '/src/assets/Mic.png'}
+										src={isListening ? '/public/assets/Mic-Active.png' : '/public/assets/Mic.png'}
 									></img>
 								</button>
 							</div>

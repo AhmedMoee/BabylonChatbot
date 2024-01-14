@@ -37,15 +37,15 @@ export default function App() {
 					ref={popUpRef}
 				>
 					<button className="hover:animate-vote" onClick={() => setProfilePopup(!profilePopup)}>
-						<img className="" src="/src/assets/Profile-Icon.png" alt="logo" />
+						<img className="" src="/public/assets/Profile-Icon.png" alt="logo" />
 					</button>
 
 					<button className="hover:animate-vote">
-						<img className="" src="/src/assets/layout.png" alt="logo" />
+						<img className="" src="/public/assets/layout.png" alt="logo" />
 					</button>
 
 					<button className="hover:animate-vote" onClick={() => setRatingPopup(!ratingPopup)}>
-						<img className="" src="/src/assets/Star-Icon.png" alt="logo" />
+						<img className="" src="/public/assets/Star-Icon.png" alt="logo" />
 					</button>
 
 					<button
@@ -53,14 +53,14 @@ export default function App() {
 						onClick={() => setColorScheme(colorScheme === 'dark' ? '' : 'dark')}
 					>
 						{colorScheme === 'dark' ? (
-							<img className="" src="/src/assets/moon.png" alt="logo" />
+							<img className="" src="/public/assets/moon.png" alt="logo" />
 						) : (
-							<img className="" src="/src/assets/sun.png" alt="logo" />
+							<img className="" src="/public/assets/sun.png" alt="logo" />
 						)}
 					</button>
 
 					<button className="hover:animate-vote" onClick={() => setFaqPopup(!faqPopup)}>
-						<img className="" src="/src/assets/faq.png" alt="logo" />
+						<img className="" src="/public/assets/faq.png" alt="logo" />
 					</button>
 
 					<PopUp trigger={ratingPopup} onClose={() => setRatingPopup(false)}>
@@ -76,7 +76,7 @@ export default function App() {
 								<div className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-babylon-blue-dark text-white ring ring-white dark:bg-babylon-blue-light sm:text-base md:h-16 md:w-16 md:text-lg lg:h-16 lg:w-16 lg:text-xl">
 									<img
 										className="inline-block h-12 w-12 rounded-full ring ring-white md:h-16 md:w-16 lg:h-16 lg:w-16"
-										src="/src/assets/user.png"
+										src="/public/assets/user.png"
 										alt="logo"
 									/>
 								</div>
@@ -228,15 +228,15 @@ export default function App() {
 							className=" grow-0 hover:animate-vote"
 							onClick={() => setProfilePopup(!profilePopup)}
 						>
-							<img className="" src="/src/assets/Profile-Icon.png" alt="logo" />
+							<img className="" src="/public/assets/Profile-Icon.png" alt="logo" />
 						</button>
 
 						<button className="hover:animate-vote">
-							<img className="" src="/src/assets/layout.png" alt="logo" />
+							<img className="" src="/public/assets/layout.png" alt="logo" />
 						</button>
 
 						<button className="hover:animate-vote" onClick={() => setRatingPopup(!ratingPopup)}>
-							<img className="" src="/src/assets/Star-Icon.png" alt="logo" />
+							<img className="" src="/public/assets/Star-Icon.png" alt="logo" />
 						</button>
 
 						<button
@@ -244,14 +244,14 @@ export default function App() {
 							onClick={() => setColorScheme(colorScheme === 'dark' ? '' : 'dark')}
 						>
 							{colorScheme === 'dark' ? (
-								<img className="" src="/src/assets/moon.png" alt="logo" />
+								<img className="" src="/public/assets/moon.png" alt="logo" />
 							) : (
-								<img className="" src="/src/assets/sun.png" alt="logo" />
+								<img className="" src="/public/assets/sun.png" alt="logo" />
 							)}
 						</button>
 
 						<button className="hover:animate-vote" onClick={() => setFaqPopup(!faqPopup)}>
-							<img className="" src="/src/assets/faq.png" alt="logo" />
+							<img className="" src="/public/assets/faq.png" alt="logo" />
 						</button>
 
 						<PopUp trigger={ratingPopup} onClose={() => setRatingPopup(false)}>
@@ -267,7 +267,7 @@ export default function App() {
 									<div className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-babylon-blue-dark text-white ring ring-white dark:bg-babylon-blue-light sm:text-base md:h-16 md:w-16 md:text-lg lg:h-16 lg:w-16 lg:text-xl">
 										<img
 											className="inline-block h-12 w-12 rounded-full ring ring-white md:h-16 md:w-16 lg:h-16 lg:w-16"
-											src="/src/assets/user.png"
+											src="/public/assets/user.png"
 											alt="logo"
 										/>
 									</div>
